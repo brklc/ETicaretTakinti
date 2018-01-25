@@ -35,7 +35,7 @@ namespace Takinti.Controllers
             {
                 if (!String.IsNullOrEmpty(form["Quantity_" + item.Product.Slug.ToLower()]))
                 {
-                    var sessionCartItem=((Cart)Session["Cart"]).CartItems.FirstOrDefault(c => c.Product.Slug == item.Product.Slug.ToLower());
+                    var sessionCartItem=((Cart)Session["Cart"]).CartItems.FirstOrDefault(c => c.Product.Slug.ToLower() == item.Product.Slug.ToLower());
                     sessionCartItem.Quantity = Convert.ToInt32(form["Quantity_" + item.Product.Slug.ToLower()]);
                     if (sessionCartItem.Quantity <= 0)
                     {
