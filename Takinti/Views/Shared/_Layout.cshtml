@@ -429,10 +429,14 @@
             });
         }
         function RemoveFromCart(slug, closeModal) {
+            $("input[name='Quantity_" + slug + "']").val(0);
+            $("#cartForm").submit();
+
             $.post("/Shop/RemoveFromCart", { slug: slug }, function (data) {
                
                    UpdateBadge(data);
                    UpdateCart();
+                 
 
             }).fail(function () {
                 alert("Bir Hata oluştu.");
@@ -452,8 +456,10 @@
         function UpdateCart() {
             $.post("/Shop/Cart", function (data) {
                 $("#layoutShoppingCart").html(data);
+                
             });
         }
+        
     </script>
     @*bu sectiona script gönderebilmek için.*@
     @RenderSection("scripts",false)

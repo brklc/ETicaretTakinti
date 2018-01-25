@@ -19,6 +19,33 @@ namespace Takinti.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Cart(FormCollection form)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                return View("LayoutCart");
+            }
+            if(Session["Cart"] == null)
+            {
+                Session["Cart"] = new Cart();
+            }
+            var cartItems = ((Cart)Session["Cart"]).CartItems.ToArray();
+            foreach (var item in  cartItems)
+            {
+                if (!String.IsNullOrEmpty(form["Quantity_" + item.Product.Slug.ToLower()]))
+                {
+                    var sessionCartItem=((Cart)Session["Cart"]).CartItems.FirstOrDefault(c => c.Product.Slug == item.Product.Slug.ToLower());
+                    sessionCartItem.Quantity = Convert.ToInt32(form["Quantity_" + item.Product.Slug.ToLower()]);
+                    if (sessionCartItem.Quantity <= 0)
+                    {
+                        ((Cart)Session["Cart"]).CartItems.Remove(sessionCartItem);
+                    }
+                }
+            }
+            return View();
+        }
+
         public ActionResult Checkout()
         {
             return View();
