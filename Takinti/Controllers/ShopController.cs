@@ -46,6 +46,7 @@ namespace Takinti.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Checkout()
         {
             return View();

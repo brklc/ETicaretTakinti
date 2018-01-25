@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Checkout";
+    ViewBag.Title = "Alışverişi Tamamla";
 }
 
 <!-- Start Bradcaump area -->
@@ -10,11 +10,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="bradcaump__inner text-center">
-                        <h2 class="bradcaump-title">Checkout</h2>
+                        <h2 class="bradcaump-title">Alışverişi Tamamla</h2>
                         <nav class="bradcaump-inner">
-                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <a class="breadcrumb-item" href="@Url.Action("Index","Home")">Anasayfa</a>
                             <span class="brd-separetor">/</span>
-                            <span class="breadcrumb-item active">Checkout</span>
+                            <span class="breadcrumb-item active">Alışverişi Tamamla</span>
                         </nav>
                     </div>
                 </div>
@@ -31,65 +31,79 @@
                 <div class="ckeckout-left-sidebar">
                     <!-- Start Checkbox Area -->
                     <div class="checkout-form">
-                        <h2 class="section-title-3">Billing details</h2>
+                        <h2 class="section-title-3">Fatura Ayrıntıları</h2>
                         <div class="checkout-form-inner">
                             <div class="single-checkout-box">
-                                <input type="text" placeholder="First Name*">
-                                <input type="text" placeholder="Last Name*">
+                                <input type="text" placeholder="Ad Soyad*">
+                                <input type="text" placeholder="TC Kimlik No*">
                             </div>
                             <div class="single-checkout-box">
-                                <input type="email" placeholder="Emil*">
-                                <input type="text" placeholder="Phone*">
+                                <input type="email" placeholder="E-Posta*">
+                                <input type="text" placeholder="Telefon*">
                             </div>
                             <div class="single-checkout-box">
-                                <textarea name="message" placeholder="Message*"></textarea>
+                                <textarea name="address" placeholder="Adres*"></textarea>
                             </div>
                             <div class="single-checkout-box select-option mt--40">
                                 <select>
-                                    <option>Country*</option>
-                                    <option>Bangladesh</option>
+                                    <option>Ülke*</option>
+                                    <option>Türkiye</option>
                                     <option>Bangladesh</option>
                                     <option>Bangladesh</option>
                                     <option>Bangladesh</option>
                                 </select>
-                                <input type="text" placeholder="Company Name*">
+                                <input type="text" placeholder="Firma Adı">
                             </div>
                             <div class="single-checkout-box">
-                                <input type="email" placeholder="State*">
-                                <input type="text" placeholder="Zip Code*">
+                                <select>
+                                    <option>Şehir*</option>
+                                    <option>İstanbul</option>
+                                    <option>Bangladesh</option>
+                                    <option>Bangladesh</option>
+                                    <option>Bangladesh</option>
+                                </select>
+                                <input type="text" placeholder="Posta Kodu*">
                             </div>
                             <div class="single-checkout-box checkbox">
-                                <input id="remind-me" type="checkbox">
-                                <label for="remind-me"><span></span>Create a Account ?</label>
+                                <textarea placeholder="Adres"></textarea>
                             </div>
                         </div>
                     </div>
                     <!-- End Checkbox Area -->
                     <!-- Start Payment Box -->
-                    <div class="payment-form">
-                        <h2 class="section-title-3">payment details</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p>
+                    <div class="payment-form form-inline">
+                        <h2 class="section-title-3">Ödeme Ayrıntıları</h2>
+                        <p>Sitemiz SSL Sertifikası ile korunmaktadır, ayrıca 3D güvenlik kullanmaktayız.</p>
                         <div class="payment-form-inner">
                             <div class="single-checkout-box">
-                                <input type="text" placeholder="Name on Card*">
-                                <input type="text" placeholder="Card Number*">
+                                <input type="text" placeholder="Kart Üzerindeki İsim*">
+                                <input type="text" placeholder="Kart Numarası*">
                             </div>
                             <div class="single-checkout-box select-option">
-                                <select>
-                                    <option>Date*</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                </select>
-                                <input type="text" placeholder="Security Code*">
-                            </div>
+                                <div class="input-group-sm" style="display:inline-block;">
+                                    <select class="form-control">
+                                        <option>Ay*</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                    </select>
+                                    <select class="form-control">
+                                        <option>Yıl*</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                    </select>
+                                </div>
+                                    <input type="text" placeholder="Güvenlik Kodu*">
+                                </div>
                         </div>
                     </div>
                     <!-- End Payment Box -->
                     <!-- Start Payment Way -->
                     <div class="our-payment-sestem">
-                        <h2 class="section-title-3">We  Accept :</h2>
+                        <h2 class="section-title-3">Geçerli Kartlar :</h2>
                         <ul class="payment-menu">
                             <li><a href="#"><img src="/images/payment/1.jpg" alt="payment-img"></a></li>
                             <li><a href="#"><img src="/images/payment/2.jpg" alt="payment-img"></a></li>
@@ -98,7 +112,7 @@
                             <li><a href="#"><img src="/images/payment/5.jpg" alt="payment-img"></a></li>
                         </ul>
                         <div class="checkout-btn">
-                            <a class="ts-btn btn-light btn-large hover-theme" href="#">CONFIRM & BUY NOW</a>
+                            <a class="ts-btn btn-light btn-large hover-theme" href="#">Doğrula & Hemen Al</a>
                         </div>
                     </div>
                     <!-- End Payment Way -->
@@ -107,7 +121,7 @@
             <div class="col-md-4 col-lg-4">
                 <div class="checkout-right-sidebar">
                     <div class="our-important-note">
-                        <h2 class="section-title-3">Note :</h2>
+                        <h2 class="section-title-3">Notlar :</h2>
                         <p class="note-desc">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut laborekf et dolore magna aliqua.</p>
                         <ul class="important-note">
                             <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
@@ -118,7 +132,7 @@
                         </ul>
                     </div>
                     <div class="puick-contact-area mt--60">
-                        <h2 class="section-title-3">Quick Contract</h2>
+                        <h2 class="section-title-3">Hızlı İrtibat</h2>
                         <a href="phone:+8801722889963">+012 345 678 102 </a>
                     </div>
                 </div>
