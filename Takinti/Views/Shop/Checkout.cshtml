@@ -28,14 +28,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-8">
-                @using (Html.BeginForm()) { 
+                @using (Html.BeginForm()) {
                 <div class="ckeckout-left-sidebar">
                     <!-- Start Checkbox Area -->
                     <div class="checkout-form">
                         <h2 class="section-title-3">Fatura Ayrıntıları</h2>
                         <div class="checkout-form-inner">
                             <div class="single-checkout-box">
-                                @Html.TextBoxFor(model => model.FullName,null,new {placeholder="Ad Soyad*" })
+                                @Html.TextBoxFor(model => model.FullName, null, new { placeholder = "Ad Soyad*" })
                                 @Html.TextBoxFor(model => model.IdentityNumber, null, new { placeholder = "Tc Kimlik No*" })
                             </div>
                             <div class="single-checkout-box">
@@ -48,15 +48,13 @@
                             </div>
                             <div class="single-checkout-box select-option mt--40">
                                 @Html.DropDownListFor(model => model.CountryId, (IEnumerable<SelectListItem>)ViewBag.Countries, "Ülke")
-                                @Html.TextBoxFor(model => model.CompanyName, null, new {placeholder ="Firma Adı" })
+                                @Html.TextBoxFor(model => model.CompanyName, null, new { placeholder = "Firma Adı" })
                             </div>
                             <div class="single-checkout-box">
                                 @Html.DropDownListFor(model => model.CityId, (IEnumerable<SelectListItem>)ViewBag.Cities, "Şehir")
                                 @Html.TextBoxFor(model => model.ZipCode, null, new { placeholder = "Posta Kodu" })
                             </div>
-                            <div class="single-checkout-box checkbox">
-                                <textarea placeholder="Adres"></textarea>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- End Checkbox Area -->
@@ -73,8 +71,8 @@
                                 <div class="input-group-sm" style="display:inline-block;">
                                     <select name="Month" class="form-control">
                                         <option>Ay*</option>
-                                        @for(var i = 1; i<=12; i++) {
-                                            <option value="@i" @(Model != null && Model.Month==i?"selected='selected'":"")>@string.Format("{0:00}",i)</option>
+                                        @for (var i = 1; i <= 12; i++) {
+                                            <option value="@i" @(Model != null && Model.Month == i ? "selected='selected'" : "")>@string.Format("{0:00}", i)</option>
                                         }
                                     </select>
                                     <select name="Year" class="form-control">
@@ -85,14 +83,16 @@
                                         }
                                     </select>
                                 </div>
-                                    <input type="text" placeholder="Güvenlik Kodu*">
+                                    @Html.TextBoxFor(model => model.Ccv, null, new { placeholder = "Güvenlik Kodu" })
                                 </div>
                         </div>
                     </div>
                     <!-- End Payment Box -->
                     <!-- Start Payment Way -->
                     <div class="our-payment-sestem">
-                        <h2 class="section-title-3">Geçerli Kartlar :</h2>
+                        <h2 class="section-title-4">Tahsil Edilecek Tutar :</h2>
+                        <h3 class="section-title-2">@(Session["Cart"] != null ? ((Takinti.Models.Cart)Session["Cart"]).TotalPrice.ToString() : "0") ₺</h3>
+
                         <ul class="payment-menu">
                             <li><a href="#"><img src="/images/payment/1.jpg" alt="payment-img"></a></li>
                             <li><a href="#"><img src="/images/payment/2.jpg" alt="payment-img"></a></li>
@@ -100,6 +100,7 @@
                             <li><a href="#"><img src="/images/payment/4.jpg" alt="payment-img"></a></li>
                             <li><a href="#"><img src="/images/payment/5.jpg" alt="payment-img"></a></li>
                         </ul>
+                           
                 
                             <button type="submit" class="btn btn-primary btn-large hover-theme">Ödeme Yap & Hemen Al</button>
                      

@@ -13,9 +13,6 @@ namespace Takinti.Models
         {
             CreateDate = DateTime.Now;
             Quantity = 1; 
-
-
-
         }
 
         public int Id { get; set; }
