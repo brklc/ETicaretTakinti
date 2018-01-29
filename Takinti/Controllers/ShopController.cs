@@ -51,7 +51,15 @@ namespace Takinti.Controllers
         {
             return View();
         }
-        
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Checkout(CheckoutViewModel checkout)
+        {
+            return View();
+        }
+
+
         public JsonResult AddToCart(string slug)
         {
             using (var db = new ApplicationDbContext())
