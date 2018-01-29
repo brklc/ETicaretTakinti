@@ -35,36 +35,24 @@
                         <h2 class="section-title-3">Fatura Ayrıntıları</h2>
                         <div class="checkout-form-inner">
                             <div class="single-checkout-box">
-                                @Html.TextBoxFor(model => model.FullName,null,new {placeholder="Ad Soyad" })
-                                @Html.TextBoxFor(model => model.IdentityNumber, null, new { placeholder = "Tc Kimlik No" })
+                                @Html.TextBoxFor(model => model.FullName,null,new {placeholder="Ad Soyad*" })
+                                @Html.TextBoxFor(model => model.IdentityNumber, null, new { placeholder = "Tc Kimlik No*" })
                             </div>
                             <div class="single-checkout-box">
                                 @Html.TextBoxFor(model => model.Email, null, new { placeholder = "E-Posta*" })
-                                @Html.TextBoxFor(model => model.Phone, null, new { placeholder = "Telefon" })
+                                @Html.TextBoxFor(model => model.Phone, null, new { placeholder = "Telefon*" })
                             </div>
                             <div class="single-checkout-box">
-                                @Html.TextAreaFor(model => model.Address, new { placeholder = "Adres" })
+                                @Html.TextAreaFor(model => model.Address, new { placeholder = "Adres*" })
                                 
                             </div>
                             <div class="single-checkout-box select-option mt--40">
-                                <select>
-                                    <option>Ülke*</option>
-                                    <option>Türkiye</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                </select>
-                                <input type="text" placeholder="Firma Adı">
+                                @Html.DropDownListFor(model => model.CountryId, (IEnumerable<SelectListItem>)ViewBag.Countries, "Ülke")
+                                @Html.TextBoxFor(model => model.CompanyName, null, new {placeholder ="Firma Adı" })
                             </div>
                             <div class="single-checkout-box">
-                                <select>
-                                    <option>Şehir*</option>
-                                    <option>İstanbul</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                </select>
-                                <input type="text" placeholder="Posta Kodu*">
+                                @Html.DropDownListFor(model => model.CityId, (IEnumerable<SelectListItem>)ViewBag.Cities, "Şehir")
+                                @Html.TextBoxFor(model => model.ZipCode, null, new { placeholder = "Posta Kodu" })
                             </div>
                             <div class="single-checkout-box checkbox">
                                 <textarea placeholder="Adres"></textarea>
@@ -78,24 +66,23 @@
                         <p>Sitemiz SSL Sertifikası ile korunmaktadır, ayrıca 3D güvenlik kullanmaktayız.</p>
                         <div class="payment-form-inner">
                             <div class="single-checkout-box">
-                                <input type="text" placeholder="Kart Üzerindeki İsim*">
-                                <input type="text" placeholder="Kart Numarası*">
+                               @Html.TextBoxFor(model => model.CardHolderName, null, new { placeholder = "Kart Ad Soyad" })
+                                @Html.TextBoxFor(model => model.CardNumber, null, new { placeholder = "Kart Numarası" })
                             </div>
                             <div class="single-checkout-box select-option">
                                 <div class="input-group-sm" style="display:inline-block;">
-                                    <select class="form-control">
+                                    <select name="Month" class="form-control">
                                         <option>Ay*</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
+                                        @for(var i = 1; i<=12; i++) {
+                                            <option value="@i" @(Model != null && Model.Month==i?"selected='selected'":"")>@string.Format("{0:00}",i)</option>
+                                        }
                                     </select>
-                                    <select class="form-control">
+                                    <select name="Year" class="form-control">
                                         <option>Yıl*</option>
-                                        <option>18</option>
-                                        <option>19</option>
-                                        <option>20</option>
-                                        <option>21</option>
+                                        @for (var i = DateTime.Now.Year; i <= DateTime.Now.Year + 20; i++)
+                                        {
+                                            <option value="@i" @(Model != null && Model.Year == i ? "selected='selected'" : "")>@string.Format("{0:00}", i)</option>
+                                        }
                                     </select>
                                 </div>
                                     <input type="text" placeholder="Güvenlik Kodu*">

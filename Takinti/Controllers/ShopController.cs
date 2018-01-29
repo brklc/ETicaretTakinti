@@ -49,6 +49,11 @@ namespace Takinti.Controllers
         [Authorize]
         public ActionResult Checkout()
         {
+            using (var db = new ApplicationDbContext())
+            {
+                ViewBag.Countries =new SelectList(db.Countries.OrderBy(c => c.Name).ToList(),"Id","Name");
+                ViewBag.Cities = new SelectList(db.Cities.OrderBy(c => c.Name).ToList(), "Id", "Name");
+            }
             return View();
         }
 
@@ -56,7 +61,12 @@ namespace Takinti.Controllers
         [HttpPost]
         public ActionResult Checkout(CheckoutViewModel checkout)
         {
-            return View();
+            using (var db = new ApplicationDbContext())
+            {
+                ViewBag.Countries = new SelectList(db.Countries.OrderBy(c => c.Name).ToList(), "Id", "Name",checkout.CountryId);
+                ViewBag.Cities = new SelectList(db.Cities.OrderBy(c => c.Name).ToList(), "Id", "Name",checkout.CityId);
+            }
+            return View(checkout);
         }
 
 
